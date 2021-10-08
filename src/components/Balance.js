@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useContext} from 'react'
+
+import { GlobalContext } from '../context/GlobalState';
 
 const Balance = (props) => {
+    const { transactions } = useContext(GlobalContext);
+    const amounts = transactions.map(transaction => transaction.amount.toFixed(2));
+    const total = parseInt(amounts.reduce((acc, item) => (acc += item), 0)).toFixed(2);
     return (
-        <>
-            <h2>{props.title}</h2>
-            <div>$0.00</div>
-        </>
+        <div className="balance">
+            <h2 className="balance-title">{props.title}</h2>
+            <div className="balance-total">${total}</div>
+        </div>
     )
 }
 

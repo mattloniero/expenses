@@ -1,9 +1,17 @@
 :root {
-  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --box-shadow: 0 0.5rem 2.5rem -1rem rgba(0, 0, 0, 0.2);
+  --border-radius: 0.5rem;
+  --border-radius-sm: 0.25rem;
+  --color-light: #FEFEFE;
+  --color-dark: #212121;
 }
 
 * {
   box-sizing: border-box;
+}
+
+#root {
+  width: 100%;
 }
 
 body {
@@ -14,7 +22,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   margin: 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Lato', Arial, sans-serif;
 }
 
 .container {
@@ -38,12 +46,29 @@ h4 {
   text-transform: uppercase;
 }
 
+.balance {
+  text-align: center;
+}
+
+.balance-title {
+  font-size: 2rem;
+  font-weight: 700rem;
+  margin: 0;
+}
+
+.balance-total {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
 .inc-exp-container {
   background-color: #fff;
   box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 20px 0;
 }
 
@@ -53,11 +78,11 @@ h4 {
 }
 
 .inc-exp-container > div:first-of-type {
-  border-right: 1px solid #dedede;
+  border-right: 1px solid var(--color-light);
 }
 
 .money {
-  font-size: 20px;
+  font-size: 2rem;
   letter-spacing: 1px;
   margin: 5px 0;
 }
@@ -77,7 +102,7 @@ label {
 
 input[type='text'],
 input[type='number'] {
-  border: 1px solid #dedede;
+  border: 1px solid var(--color-light);
   border-radius: 2px;
   display: block;
   font-size: 16px;
@@ -89,7 +114,8 @@ input[type='number'] {
   cursor: pointer;
   background-color: #9c88ff;
   box-shadow: var(--box-shadow);
-  color: #fff;
+  border-radius: var(--border-radius);
+  color: var(--color-light);
   border: 0;
   display: block;
   font-size: 16px;
@@ -110,9 +136,10 @@ input[type='number'] {
 }
 
 .list li {
-  background-color: #fff;
+  background-color: var(--color-light);
+  color: var(--color-dark);
   box-shadow: var(--box-shadow);
-  color: #333;
+  border-radius: var(--border-radius-sm);
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -132,7 +159,7 @@ input[type='number'] {
   cursor: pointer;
   background-color: #e74c3c;
   border: 0;
-  color: #fff;
+  color: var(--color-light);
   font-size: 20px;
   line-height: 20px;
   padding: 2px 5px;
@@ -146,4 +173,65 @@ input[type='number'] {
 
 .list li:hover .delete-btn {
   opacity: 1;
+}
+
+header {
+  background-color: #cffdef;
+  background-image: url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 0H0v36h36V0zM15.126 2H2v13.126c.367.094.714.24 1.032.428L15.554 3.032c-.188-.318-.334-.665-.428-1.032zM18 4.874V18H4.874c-.094-.367-.24-.714-.428-1.032L16.968 4.446c.318.188.665.334 1.032.428zM22.874 2h11.712L20 16.586V4.874c1.406-.362 2.512-1.468 2.874-2.874zm10.252 18H20v13.126c.367.094.714.24 1.032.428l12.522-12.522c-.188-.318-.334-.665-.428-1.032zM36 22.874V36H22.874c-.094-.367-.24-.714-.428-1.032l12.522-12.522c.318.188.665.334 1.032.428zm0-7.748V3.414L21.414 18h11.712c.362-1.406 1.468-2.512 2.874-2.874zm-18 18V21.414L3.414 36h11.712c.362-1.406 1.468-2.512 2.874-2.874zM4.874 20h11.712L2 34.586V22.874c1.406-.362 2.512-1.468 2.874-2.874z' fill='%23bed4ec' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.7);
+  z-index: 1;
+}
+
+header > * {
+  position: relative;
+  z-index: 100;
+}
+
+
+.radios-horizontal {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+}
+
+.radios-horizontal > * {
+  flex-basis: calc(50% - 1rem);
+  flex-grow: 999;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.radios-horizontal > .form-control {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+}
+
+.radios-horizontal > .form-control > label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.radios-horizontal > .form-control > input[type="radio"] {
+  transform: translateY(-1px) scale(1.5);
+  cursor: pointer;
 }
