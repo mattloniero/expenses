@@ -11,7 +11,7 @@ const AddExpense = (props) => {
         e.preventDefault();
         let newAmount = 0;
         if (expenseType === 'expense') {
-            newAmount = amount * -1;
+            newAmount = (amount * -1);
         } else if (expenseType === 'income') {
             newAmount = +amount;
         }
@@ -20,7 +20,7 @@ const AddExpense = (props) => {
             text,
             amount: newAmount
         }
-        console.log(newTransaction)
+        console.log(newTransaction);
         addTransaction(newTransaction);
     }
     function handleOnChange(e) {
@@ -28,7 +28,7 @@ const AddExpense = (props) => {
     }
     return (
         <>
-            <h3>{props.title}</h3>
+            <h3 className="section-header">{props.title}</h3>
             <form onSubmit={handleOnSubmit}>
                 <div className="form-control">
                     <label htmlFor="amount">Amount</label>

@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
 import { GlobalContext } from '../context/GlobalState';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Transaction = (props) => {
     const { deleteTransaction } = useContext(GlobalContext);
-    const sign = props.transaction.amount < 0 ? '-' : '+';
     return (
-        <li key={props.transaction.id} className={props.transaction.amount < 0 ? `minus` : `plus`}>
-            {props.transaction.text} <span>{sign}${Math.abs(props.transaction.amount)}</span><button className="delete-btn" onClick={() => deleteTransaction(props.transaction.id)}>x</button>
+        <li className="expense-item" key={props.transaction.id}>
+            <div className={props.transaction.amount < 0 ? `minus` : `plus`}>{props.transaction.amount < 0 ? <FontAwesomeIcon icon="hand-holding-usd" /> : <FontAwesomeIcon icon="dollar-sign" /> }</div>
+            <div className="expense-item--note">{props.transaction.text}</div>
+            <div className="expense-item--amount">${props.transaction.amount}</div>
+            <button className="delete-btn" onClick={() => deleteTransaction(props.transaction.id)}>x</button>
         </li>
     )
 }
