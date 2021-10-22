@@ -8,7 +8,7 @@ const Balance = (props) => {
     const total = (amounts.reduce((acc, item) => (acc += item), 0)).toFixed(2);
     return (
         <div className="balance">
-            <h2 className="balance-title">{props.title}</h2>
+            <h1 className="balance-title">{props.title}</h1>
             <div className="balance-total">${total}</div>
         </div>
     )
