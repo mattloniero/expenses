@@ -9,7 +9,7 @@ const Transaction = (props) => {
             <div className={props.transaction.amount < 0 ? `minus` : `plus`}>{props.transaction.amount < 0 ? <FontAwesomeIcon icon="hand-holding-usd" /> : <FontAwesomeIcon icon="dollar-sign" /> }</div>
             <div className="expense-item--note">{props.transaction.text}</div>
             <div className="expense-item--amount">${Math.abs(props.transaction.amount)}</div>
-            <button className="delete-btn" onClick={() => deleteTransaction(props.transaction.id)}>x</button>
+            <button className="delete-btn" onClick={() => deleteTransaction(props.transaction.id)}><FontAwesomeIcon icon="times" /></button>
         </li>
     )
 }

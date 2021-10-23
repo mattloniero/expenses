@@ -5,7 +5,7 @@ import { GlobalContext } from '../context/GlobalState';
 const AddExpense = (props) => {
     const [text,setText] = useState('');
     const [amount,setAmount] = useState(0);
-    const [expenseType, setExpenseType] = useState('');
+    const [expenseType, setExpenseType] = useState('expense');
     const { addTransaction } = useContext(GlobalContext);
     function handleOnSubmit(e) {
         e.preventDefault();
@@ -20,7 +20,9 @@ const AddExpense = (props) => {
             text,
             amount: newAmount
         }
-        console.log(newTransaction);
+        setAmount(0);
+        setText('');
+        setExpenseType('expense')
         addTransaction(newTransaction);
     }
     function handleOnChange(e) {
@@ -41,7 +43,7 @@ const AddExpense = (props) => {
                 <div className="radios-horizontal">
                     <div className="form-control">
                         <label htmlFor="expense-transaction">Expense</label>
-                        <input type="radio" name="expenseType" value="expense" onChange={(e) => handleOnChange(e)} />
+                        <input type="radio" check="true" name="expenseType" value="expense" onChange={(e) => handleOnChange(e)} />
                     </div>
                     <div className="form-control">
                         <label htmlFor="income-transaction">Income</label>
